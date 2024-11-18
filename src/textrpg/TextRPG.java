@@ -14,6 +14,8 @@ public class TextRPG {
 	
 	private InputManager input;
 	private Thread inputThread;
+	private StageManager stage;
+	private Thread stageThread;
 	
 	public void run() {
 		init();
@@ -22,13 +24,15 @@ public class TextRPG {
 	
 	private void init() {
 		input = InputManager.getInstance();
-		inputThread = new Thread(input);		
+		inputThread = new Thread(input);	
 		
+		stage = StageManager.getInstance();
+		stageThread = new Thread(stage);
 	}
 	
 	private void play() {
 		inputThread.start();
-		
+		stageThread.start();
 	}
 
 }

@@ -20,7 +20,7 @@ public class InputManager extends Thread {
 
 	private BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 	
-	private static String input = "";
+	public static String input = "";
 	
 	@Override
 	public void run() {
@@ -29,12 +29,7 @@ public class InputManager extends Thread {
 				buffer.setLength(0);
 				buffer.append(reader.readLine());
 				input = buffer.toString();
-				
-				if(input.equals("next")) {
-					System.out.println("Clear");
-				} else {
-					System.out.println("Beep-");
-				}
+
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
