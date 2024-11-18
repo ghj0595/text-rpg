@@ -1,14 +1,21 @@
 package units;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+
 public abstract class Unit {
-	private String name;
+	public String name;
+	public int hp;
 	private int level;
-	private int hp;
 	private int maxHp;
 	private int att;
-	private int def;
+	public int def;
 	private int exp;
 	private boolean party;
+	
+	private BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
+
 	
 	private Unit(){
 		
@@ -22,6 +29,25 @@ public abstract class Unit {
 		this.att = att;
 		this.def = def;
 		this.exp = exp;
+	}
+	
+	public void attack(Monster target) {
+		target.hp -= att;
+		
+		try {
+			writer.write("[" + name + "]가 [" + target.name + "]에게 " + att + "의 데미지를 입힙니다.\n");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		if(target.hp <= 0) {
+			try {
+				writer.write("[" + target.name + "]를 처치했습니다.\n");
+				target.hp = 0;
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
 }
