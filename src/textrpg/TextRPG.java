@@ -1,29 +1,45 @@
 package textrpg;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+
 public class TextRPG {
-	
+
 	private TextRPG() {
-		
+
 	}
-	
+
 	public static TextRPG instance = new TextRPG();
-	
+
 	public static TextRPG getInstance() {
 		return instance;
 	}
-	
+
+	private BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
+
 	private boolean isRun = true;
 
-	
 	public void run() {
 		GameManager.instance.init();
-		while(true) {
+		while (true) {
 			isRun = GameManager.instance.changeStage();
-			
-			if(isRun == false) {
+
+			if (isRun == false) {
 				break;
-			}		
-		}		
+			}
+		}
+		try {
+			writer.write("게임을 종료했습니다.");
+			writer.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				writer.close();
+			} catch (Exception e) {
+			}
+		}
 	}
 
 }
