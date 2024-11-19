@@ -6,6 +6,7 @@ import units.Player;
 
 public class StageTitle extends Stage {
 	
+	private Guild guild = Guild.getInstance();	
 
 	@Override
 	public boolean update() {
@@ -28,6 +29,8 @@ public class StageTitle extends Stage {
 
 	@Override
 	public void init() {
+		guild.setGuild();
+
 	}
 
 }

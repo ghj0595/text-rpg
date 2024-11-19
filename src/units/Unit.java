@@ -4,15 +4,20 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 
+import textrpg.Item;
+
 public abstract class Unit {
 	public String name;
 	public int hp;
-	private int level;
-	private int maxHp;
-	private int att;
+	public int level;
+	public int maxHp;
+	public int att;
 	public int def;
-	private int exp;
-	private boolean party;
+	public int exp;
+	public Item weapon;
+	public Item armor;
+	public Item ring;
+	public boolean party;
 	
 	private BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
 
