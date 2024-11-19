@@ -3,10 +3,10 @@ package textrpg;
 import java.io.IOException;
 
 public class StageLobby extends Stage {
-	private final String BATTLE = "1";
-	private final String SETTING = "2";
-	private final String EXIT = "3";
-	
+	private final int BATTLE = 1;
+	private final int SETTING = 2;
+	private final int EXIT = 3;
+
 	private Guild guild = Guild.getInstance();
 
 	@Override
@@ -17,24 +17,19 @@ public class StageLobby extends Stage {
 			writer.write("2.설정\n");
 			writer.write("3.종료\n");
 			writer.flush();
-			
-			String input = reader.readLine();
-			
-			if(input.equals(BATTLE)) {
-				GameManager.nextStage = "BATTLE";				
-			} else if(input.equals(SETTING)) {
-				GameManager.nextStage = "SETTING";				
-			} else if(input.equals(EXIT)) {
-				GameManager.nextStage = "";				
+
+			int input = Integer.parseInt(reader.readLine());
+
+			if (input == BATTLE) {
+				GameManager.nextStage = "BATTLE";
+			} else if (input == SETTING) {
+				GameManager.nextStage = "SETTING";
+			} else if (input == EXIT) {
+				GameManager.nextStage = "";
 			}
-			
+
 		} catch (IOException e) {
 			e.printStackTrace();
-		} finally {
-			try {
-				writer.close();
-			} catch (Exception e) {
-			}
 		}
 		return false;
 	}

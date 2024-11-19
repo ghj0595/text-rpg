@@ -36,6 +36,7 @@ public abstract class Unit {
 		
 		try {
 			writer.write("[" + name + "]가 [" + target.name + "]에게 " + att + "의 데미지를 입힙니다.\n");
+			writer.flush();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -43,6 +44,7 @@ public abstract class Unit {
 		if(target.hp <= 0) {
 			try {
 				writer.write("[" + target.name + "]를 처치했습니다.\n");
+				writer.flush();
 				target.hp = 0;
 			} catch (IOException e) {
 				e.printStackTrace();
