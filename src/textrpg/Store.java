@@ -90,7 +90,7 @@ public class Store {
 			
 			try {
 				writer.write("========[상점]========\n");
-				writer.write("1.무기\t2.갑옷\t3.반지\t0.뒤로가기\n");
+				writer.write("1.무기\t2.갑옷\t3.반지\n0.뒤로가기\n");
 				writer.flush();
 				
 				int input = Integer.parseInt(reader.readLine());
