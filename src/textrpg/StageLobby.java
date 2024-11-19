@@ -12,7 +12,7 @@ public class StageLobby extends Stage {
 	@Override
 	public boolean update() {
 		try {
-			writer.write("=== LOBBY ===\n");
+			writer.write("==== LOBBY ====\n");
 			writer.write("1.전투\n");
 			writer.write("2.설정\n");
 			writer.write("3.종료\n");

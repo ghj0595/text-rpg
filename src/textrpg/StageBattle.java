@@ -8,15 +8,16 @@ public class StageBattle extends Stage {
 
 	@Override
 	public boolean update() {
+		boolean isRun = true;
 		MonsterBear bear = new MonsterBear();
-		while(true) {
-			for(int i=0; i<guild.guildList.size(); i++) {
+		while (isRun) {
+			for (int i = 0; i < guild.guildList.size(); i++) {
 				guild.guildList.get(i).attack(bear);
+				if (bear.hp == 0) {
+					isRun = false;
+					break;
+				}
 				bear.attack(guild.guildList.get(i));
-			}
-			
-			if(bear.hp == 0) {
-				break;				
 			}
 		}
 		GameManager.nextStage = "LOBBY";
