@@ -14,30 +14,31 @@ public class StageSetting extends Stage {
 
 	@Override
 	public boolean update() {
-		
-		try {
-			writer.write("=======[MENU]=======\n");
-			writer.write("1.상점\t2.인벤토리\t3.길드관리\n");
-			writer.write("4.저장\t5.로드\t0.종료\n");
-			writer.flush();
-			
-			int input = Integer.parseInt(reader.readLine());
-			
-			if(input == STORE) {
-				store.shopping();
-			}
-			else if(input == INVENTORY) {}
-			else if(input == GUILD) {}
-			else if(input == SAVE) {}
-			else if(input == LOAD) {}
-			else if(input == EXIT) {
-				GameManager.nextStage = "";
-			}
-			
-		} catch (IOException e) {
-			e.printStackTrace();
+		while(true) {
+			try {
+				writer.write("=======[MENU]=======\n");
+				writer.write("1.상점\t2.인벤토리\t3.길드관리\n");
+				writer.write("4.저장\t5.로드\t0.종료\n");
+				writer.flush();
+				
+				int input = Integer.parseInt(reader.readLine());
+				
+				if(input == STORE) {
+					store.shopping();
+				}
+				else if(input == INVENTORY) {}
+				else if(input == GUILD) {}
+				else if(input == SAVE) {}
+				else if(input == LOAD) {}
+				else if(input == EXIT) {
+					GameManager.nextStage = "";
+				}
+				
+			} catch (IOException e) {
+				e.printStackTrace();
+			}			
+			return false;
 		}
-		return false;
 	}
 
 	@Override

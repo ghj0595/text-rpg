@@ -101,12 +101,12 @@ public class Store {
 			} else if (input == EXIT) {
 				return;
 			}
-			
+
 			writer.write("구매할 아이템 번호 입력\n");
 			writer.flush();
-			
+
 			int sel = Integer.parseInt(reader.readLine());
-			
+
 			buyItem(input, sel);
 
 		} catch (IOException e) {
@@ -138,14 +138,29 @@ public class Store {
 			}
 		}
 	}
-	
+
 	private void buyItem(int kind, int input) {
+		buffer.setLength(0);
 		int count = 0;
-		for(int i=0; i<itemList.size(); i++) {
-			if(itemList.get(i).kind == kind) {
-				count ++;
-				if(count == input) {
-					
+		for (int i = 0; i < itemList.size(); i++) {
+			if (itemList.get(i).kind == kind) {
+				count++;
+				if (count == input) {
+					// 아이템 구매
+					// 플레이어 money - 구현
+					// Inventory에 아이템 추가
+					Guild.instance.guildList.get(0).money -= itemList.get(i).price;
+					Inventory.instance.addItem(itemList.get(i));
+					buffer.append("[");
+					buffer.append(itemList.get(i).name);
+					buffer.append("]을 구입했습니다.\n");
+					try {
+						writer.append(buffer);
+						writer.flush();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+					break;
 				}
 			}
 		}

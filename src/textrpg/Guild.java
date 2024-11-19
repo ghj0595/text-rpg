@@ -6,7 +6,7 @@ import units.Player;
 
 public class Guild {
 	
-	public Guild() {
+	private Guild() {
 		
 	}
 	
