@@ -86,35 +86,33 @@ public class Store {
 	}
 
 	public void shopping() {
-		try {
-			writer.write("========[상점]========\n");
-			writer.write("1.무기\t2.갑옷\t3.반지\t0.뒤로가기\n");
-			writer.flush();
-
-			int input = Integer.parseInt(reader.readLine());
-			if (input == WEAPON) {
-				printItem(WEAPON);
-			} else if (input == ARMOR) {
-				printItem(ARMOR);
-			} else if (input == RING) {
-				printItem(RING);
-			} else if (input == EXIT) {
-				return;
-			}
-
-			writer.write("구매할 아이템 번호 입력\n");
-			writer.flush();
-
-			int sel = Integer.parseInt(reader.readLine());
-
-			buyItem(input, sel);
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
+		while(true) {
+			
 			try {
-				writer.close();
-			} catch (Exception e) {
+				writer.write("========[상점]========\n");
+				writer.write("1.무기\t2.갑옷\t3.반지\t0.뒤로가기\n");
+				writer.flush();
+				
+				int input = Integer.parseInt(reader.readLine());
+				if (input == WEAPON) {
+					printItem(WEAPON);
+				} else if (input == ARMOR) {
+					printItem(ARMOR);
+				} else if (input == RING) {
+					printItem(RING);
+				} else if (input == EXIT) {
+					return;
+				}
+				
+				writer.write("구매할 아이템 번호 입력\n");
+				writer.flush();
+				
+				int sel = Integer.parseInt(reader.readLine());
+				
+				buyItem(input, sel);
+				
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
 		}
 	}

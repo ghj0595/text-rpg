@@ -26,7 +26,9 @@ public class StageSetting extends Stage {
 				if(input == STORE) {
 					store.shopping();
 				}
-				else if(input == INVENTORY) {}
+				else if(input == INVENTORY) {
+					Inventory.instance.inventoryMenu();
+				}
 				else if(input == GUILD) {}
 				else if(input == SAVE) {}
 				else if(input == LOAD) {}
@@ -37,7 +39,6 @@ public class StageSetting extends Stage {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}			
-			return false;
 		}
 	}
 
