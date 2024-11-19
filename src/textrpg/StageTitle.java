@@ -2,7 +2,10 @@ package textrpg;
 
 import java.io.IOException;
 
+import units.Player;
+
 public class StageTitle extends Stage {
+	
 
 	@Override
 	public boolean update() {
@@ -25,7 +28,6 @@ public class StageTitle extends Stage {
 
 	@Override
 	public void init() {
-
 	}
 
 }

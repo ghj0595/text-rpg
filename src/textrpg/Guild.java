@@ -6,7 +6,7 @@ import units.Player;
 
 public class Guild {
 	
-	private Guild() {
+	public Guild() {
 		
 	}
 	
@@ -23,10 +23,7 @@ public class Guild {
 		guildList.add(new Player("마법사", 1, 500, 70, 50, 0));
 		guildList.add(new Player("암살자", 1, 700, 70, 50, 0));
 	}
-	
-	public void init() {
-		setGuild();
-	}
+
 	
 
 }
