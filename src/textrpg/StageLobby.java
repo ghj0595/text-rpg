@@ -6,6 +6,8 @@ public class StageLobby extends Stage {
 	private final String BATTLE = "1";
 	private final String SETTING = "2";
 	private final String EXIT = "3";
+	
+	private Guild guild = Guild.getInstance();
 
 	@Override
 	public boolean update() {
@@ -39,7 +41,7 @@ public class StageLobby extends Stage {
 
 	@Override
 	public void init() {
-
+		guild.setGuild();
 	}
 
 }

@@ -13,7 +13,6 @@ public class GameManager {
 
 	public static String nextStage = "";
 
-	// 현재 스테이지
 	private String curStage = "";
 
 	private Map<String, Stage> stageList = new HashMap<String, Stage>();
@@ -49,7 +48,7 @@ public class GameManager {
 
 		curStage = nextStage;
 		Stage stage = stageList.get(curStage);
-		stage.init(); // 초기화
+		stage.init(); 
 
 		boolean run = true;
 		while (run) {
@@ -57,7 +56,6 @@ public class GameManager {
 			if (run == false)
 				break;
 		}
-		// 로비에서 종료를 선택하면 false 반환
 		if (nextStage.equals(""))
 			return false;
 		else

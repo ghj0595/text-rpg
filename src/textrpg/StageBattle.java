@@ -1,16 +1,20 @@
 package textrpg;
 
+import units.Player;
+
 public class StageBattle extends Stage {
+	private Guild guild = Guild.getInstance();
 
 	@Override
 	public boolean update() {
-		// TODO Auto-generated method stub
-		return false;
+		while(true) {
+			guild.guildList.size();
+			
+		}
 	}
 
 	@Override
 	public void init() {
-		// TODO Auto-generated method stub
 
 	}
 
