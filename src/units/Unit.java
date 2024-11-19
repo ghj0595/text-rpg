@@ -19,6 +19,7 @@ public abstract class Unit {
 	public Item ring;
 	public boolean party;
 	
+	private StringBuffer buffer = new StringBuffer();	
 	private BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
 
 	
@@ -56,5 +57,17 @@ public abstract class Unit {
 			}
 		}
 	}
+	
+//	public void printStatus() {
+//		buffer.append("[이름] : " + this.name + "\n");
+//		buffer.append("[레벨] : " + this.level + "\n");
+//		
+//		if(this.ring != null) {
+//			buffer.append("[체력] : " + this.hp + "+" + ring);
+//		} else {
+//			
+//		}
+//	
+//	}
 	
 }

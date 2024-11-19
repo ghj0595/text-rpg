@@ -16,7 +16,7 @@ public class Inventory {
 	private final int EQUIP = 1;
 	private final int SELL = 2;
 	private final int EXIT = 3;
-	
+
 	private final int WEAPON = 1;
 	private final int ARMOR = 2;
 	private final int RING = 3;
@@ -45,7 +45,7 @@ public class Inventory {
 				if (input == EQUIP) {
 					equip();
 				} else if (input == SELL) {
-
+					sellItem();
 				} else if (input == EXIT) {
 					break;
 				}
@@ -58,41 +58,39 @@ public class Inventory {
 	private void equip() {
 		int index = 0;
 		int sel = 0;
-		
+
 		Guild.instance.printGuildMembers();
-		
+
 		try {
 			writer.write("장착할 길드원 선택");
 			writer.flush();
-			
+
 			index = Integer.parseInt(reader.readLine()) - 1;
-			
+
 		} catch (IOException e) {
 			e.printStackTrace();
-		}		
-		
+		}
+
 		printItemList();
-		
+
 		try {
 			writer.write("장착할 장비 선택");
 			writer.flush();
-			
+
 			sel = Integer.parseInt(reader.readLine()) - 1;
-			
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		if(itemList.get(sel).kind == WEAPON) {
-			Guild.getInstance().getGuildMember(index).weapon = itemList.get(sel);			
-		}
-		else if(itemList.get(sel).kind == ARMOR) {
+
+		if (itemList.get(sel).kind == WEAPON) {
+			Guild.getInstance().getGuildMember(index).weapon = itemList.get(sel);
+		} else if (itemList.get(sel).kind == ARMOR) {
 			Guild.getInstance().getGuildMember(index).armor = itemList.get(sel);
+		} else if (itemList.get(sel).kind == RING) {
+			Guild.getInstance().getGuildMember(index).ring = itemList.get(sel);
 		}
-		else if(itemList.get(sel).kind == RING) {
-			Guild.getInstance().getGuildMember(index).ring = itemList.get(sel);			
-		}
-		
+
 		try {
 			writer.write("장비 착용 완료!\n");
 			writer.flush();
@@ -118,6 +116,30 @@ public class Inventory {
 				e.printStackTrace();
 			}
 
+		}
+	}
+
+	private void sellItem() {
+		int sel = 0;
+		printItemList();
+
+		try {
+			writer.write("판매할 장비 선택");
+			writer.flush();
+
+			sel = Integer.parseInt(reader.readLine()) - 1;
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		Guild.getInstance().getGuildMember(0).money += itemList.get(sel).price;
+		itemList.remove(sel);
+
+		try {
+			writer.write("장비를 판매했습니다.\n");
+			writer.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 
